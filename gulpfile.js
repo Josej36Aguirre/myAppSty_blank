@@ -11,6 +11,11 @@ gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
+   gulp.src('.scss/*.scss')
+  .pipe(sass({
+    outputStyle:'compact',
+    sourceComments: true
+  }))
     .pipe(sass())
     .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
@@ -25,3 +30,23 @@ gulp.task('sass', function(done) {
 gulp.task('watch', ['sass'], function() {
   gulp.watch(paths.sass, ['sass']);
 });
+
+
+
+/*************codigo nuevo***************/
+/*const gulp = require('gulp'),
+sass = require('gulp-sass'),
+autoprefixer = require('gulp-autoprefixer');
+
+gulp.task('sass'()=>
+  gulp.src('.scss/*.scss')
+  .pipe(sass({
+    outputStyle:'',
+    sourceComments: false
+  }))
+  .pipe(autoprefixer({
+    versions:['last 2 browser']
+  }))
+  .pipe(gulp.dest('.www/css/'))
+  );
+*/
